@@ -70,10 +70,13 @@ public class Flight {
     	System.out.println("Destination Communication Frequency: " + destinationCOM);
         if (refuelStops != null && !refuelStops.isEmpty()) {
             System.out.println("Refuel Stops:");
-            refuelStops.forEach(stop -> System.out.println(" - " + stop));
+            for (int i = 0; i < refuelStops.size(); i++) {
+                System.out.println(" Stop " + (i + 1) + ": " + refuelStops.get(i));
+            }
         } else {
             System.out.println("No refuel stops necessary.");
         }
+              
     }
     
 // Getter and Setter methods
@@ -112,4 +115,23 @@ public void setDestinationCOM(double destinationCOM) { this.destinationCOM = des
 
 public List<String> getRefuelStops() { return refuelStops; }
 public void setRefuelStops(List<String> refuelStops) { this.refuelStops = refuelStops; }
+
+public String getFlightPlanDetails() {
+    StringBuilder details = new StringBuilder();
+    details.append("Flight Plan:\n");
+    details.append("Starting Airport: ").append(startingAirport).append("\n");
+    details.append("Destination Airport: ").append(destinationAirport).append("\n");
+    details.append(String.format("Estimated Time of Arrival: %.2f hours\n", estimatedTime));
+    details.append(String.format("Approximate Distance: %.2f miles\n", distance));
+    details.append(String.format("Fuel Needed: %.2f gallons\n", fuelNeeded));
+    details.append(String.format("Plane Heading: %.2f degrees\n", heading));
+    details.append("Destination Communication Frequency: ").append(destinationCOM).append("\n");
+    if (refuelStops != null && !refuelStops.isEmpty()) {
+        details.append("Refuel Stops:\n");
+        refuelStops.forEach(stop -> details.append(" - ").append(stop).append("\n"));
+    } else {
+        details.append("No refuel stops necessary.\n");
+    }
+    return details.toString();
+}
 }

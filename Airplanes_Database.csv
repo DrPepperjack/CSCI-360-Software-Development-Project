@@ -5,3 +5,8 @@ Test Mod,Jet,2.0,9999.0,9999.0,9999.0
 TEST AIRPLANE,JET,1.0,10.0,150.0,10.0
 MOD,Prop,2.0,13.0,151.0,101.0
 TEST,TurboProp,2.0,10.0,150.0,15.0
+Airbus A320,Jet,2.0,2500.0,6400.0,560.0
+Piper PA-28,Prop,1.0,8.0,50.0,120.0
+Bombardier Q400,TurboProp,2.0,15.0,500.0,360.0
+Gulfstream G650,Jet,2.0,3000.0,4400.0,610.0
+Plane McFace,TurboProp,1.0,100.0,450.0,50.0

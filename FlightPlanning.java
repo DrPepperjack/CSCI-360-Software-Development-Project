@@ -19,14 +19,26 @@ public class FlightPlanning {
         List<String> refuelStops = new ArrayList<>();
 
         // Check if a refuel stop is necessary
-        if (fuelNeeded > airplane.getFuelCapacity()) {
+        if (calculateHaversineDistance(start, destination) > airplane.getMaxRange()) {
             List<Airport> refuelingAirports = findRefuelingAirports(start, destination, airplane, allAirports);
             for (Airport refuelAirport : refuelingAirports) {
                 refuelStops.add(refuelAirport.getAirportName());
             }
         }
-new Flight(start.getAirportName(), destination.getAirportName(), estimatedTime, distance, fuelNeeded, heading, destination.getRadioFrequencies(), refuelStops);
-        return null ;
+        Flight flight = new Flight(
+            start.getAirportName(),
+            destination.getAirportName(),
+            estimatedTime,
+            distance,
+            fuelNeeded,
+            heading,
+            destination.getRadioFrequencies(),
+            refuelStops
+        );
+
+        return flight;
+        
+
     }
 
     // Validate inputs to ensure no null values
@@ -38,19 +50,38 @@ new Flight(start.getAirportName(), destination.getAirportName(), estimatedTime, 
 
     // Filter and find valid refueling airports
     private static List<Airport> findRefuelingAirports(Airport start, Airport destination, Airplane airplane, List<Airport> allAirports) {
-        List<Airport> validRefuelingAirports = new ArrayList<>();
-        for (Airport airport : allAirports) {
-            if (!airport.equals(start) && !airport.equals(destination)
-                && airport.getAvailableFuelTypes().stream().anyMatch(fuelType -> fuelType.equals(airplane.getFuelType()))) {
-
-                double dist = calculateHaversineDistance(start, airport);
-                if (dist <= airplane.getMaxRange()) {
-                    validRefuelingAirports.add(airport);
+        List<Airport> refuelRoute = new ArrayList<>();
+        Airport current = start;
+        double maxRange = airplane.getMaxRange();
+    
+        while (calculateHaversineDistance(current, destination) > maxRange) {
+            Airport bestStop = null;
+            double shortestRemaining = Double.MAX_VALUE;
+    
+            for (Airport candidate : allAirports) {
+                if (candidate.equals(current) || candidate.equals(destination) || refuelRoute.contains(candidate)) continue;
+    
+                double distToCandidate = calculateHaversineDistance(current, candidate);
+                double distFromCandidateToDest = calculateHaversineDistance(candidate, destination);
+    
+                if (distToCandidate <= maxRange && isFuelCompatible(airplane, candidate) && distFromCandidateToDest < shortestRemaining) {
+                    bestStop = candidate;
+                    shortestRemaining = distFromCandidateToDest;
                 }
             }
+    
+            if (bestStop == null) {
+                System.out.println("ERROR: No valid refuel stop from " + current.getAirportName());
+                break;
+            }
+    
+            refuelRoute.add(bestStop);
+            current = bestStop;
         }
-        return validRefuelingAirports;
+    
+        return refuelRoute;
     }
+    
 
     // Calculate distance using the Haversine formula
     private static double calculateHaversineDistance(Airport a, Airport b) {
@@ -78,4 +109,12 @@ new Flight(start.getAirportName(), destination.getAirportName(), estimatedTime, 
         double x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon);
         return (Math.toDegrees(Math.atan2(y, x)) + 360) % 360;
     }
+
+    private static boolean isFuelCompatible(Airplane airplane, Airport airport) {
+        return airport.getAvailableFuelTypes().stream().anyMatch(fuel ->
+            (airplane.getFuelType() == 1.0 && fuel.equalsIgnoreCase("Avgas")) ||
+            (airplane.getFuelType() == 2.0 && fuel.equalsIgnoreCase("Jet A"))
+        );
+    }
+    
 }

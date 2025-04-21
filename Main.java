@@ -25,9 +25,8 @@ public class Main {
             System.out.println("\n[[--Flight Planning System--]]\n");
             System.out.println("1. Airport Functions");
             System.out.println("2. Airplane Functions");
-            System.out.println("3. Add Airplane");
-            System.out.println("4. Plan a Flight");
-            System.out.println("5. Exit");
+            System.out.println("3. Plan a Flight");
+            System.out.println("4. Exit");
             System.out.print("\nChoose an option: ");
 
             int choice = scanner.nextInt();
@@ -35,18 +34,15 @@ public class Main {
 
             switch (choice) {
             case 1:
-                airportFunctionsMenu(scanner, airportManager); 
+                airportFunctionsMenu(scanner, airportManager);
                 break;
             case 2:
                 airplaneFunctionsMenu(scanner, airplaneManager);
                 break;
             case 3:
-                airplaneManager.addAirplane(scanner);
-                break;
-            case 4:
                 planFlight(scanner, airportManager, airplaneManager);
                 break;
-            case 5:
+            case 4:
                 System.out.println("Exiting program...");
                 return;
             default:
