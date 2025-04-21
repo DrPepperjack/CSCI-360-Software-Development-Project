@@ -68,8 +68,4 @@ Norfolk International Airport,36.895341,-76.201,116.9,Virginia,VA,Norfolk,KORF,3
 Richmond International Airport,37.505199,-77.319702,114.1,Virginia,VA,Richmond,KRIC,3.0
 Seattle Tacoma International Airport,47.447943,-122.310276,116.8,Washington,WA,Seattle,KSEA,3.0
 General Mitchell International Airport,42.947201,-87.896599,115.65,Wisconsin,WI,Milwaukee,KMKE,3.0
-NAME2,90.0,180.0,200.0,REGION2,ABRR2,CITY2,ICAO3,2.0
-TEst,10.0,10.0,10.0,test,test,tes,tes,1.0
-TEST,10.0,10.0,100.0,TEST,TEST,TEST,DOUBLE,2.0
-MOD TEST,10.0,10.0,100.0,REGION TEST,TEST ABBR,TEST CITY,TEST ICAO,2.0
 Columbia Metropolitan Airport,33.93889,-81.11944,133.4,South Carolina,SC,Columbia,KCAE,3.0

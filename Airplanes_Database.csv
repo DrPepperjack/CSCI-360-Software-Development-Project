@@ -1,10 +1,6 @@
 Make and Model,Plane Type,Fuel Type,Fuel Burn Rate,Fuel Capacity,Airspeed
 Boeing 737,Jet,2.0,3200.0,6295.0,606.0
 Cessna 172,Prop,1.0,9.0,53.0,123.0
-Test Mod,Jet,2.0,9999.0,9999.0,9999.0
-TEST AIRPLANE,JET,1.0,10.0,150.0,10.0
-MOD,Prop,2.0,13.0,151.0,101.0
-TEST,TurboProp,2.0,10.0,150.0,15.0
 Airbus A320,Jet,2.0,2500.0,6400.0,560.0
 Piper PA-28,Prop,1.0,8.0,50.0,120.0
 Bombardier Q400,TurboProp,2.0,15.0,500.0,360.0
