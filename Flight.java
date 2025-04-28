@@ -79,59 +79,59 @@ public class Flight {
               
     }
     
-// Getter and Setter methods
-public String getStartingAirport() { return startingAirport; }
-public void setStartingAirport(String startingAirport) { this.startingAirport = startingAirport; }
+    // Getter and Setter methods
+    public String getStartingAirport() { return startingAirport; }
+    public void setStartingAirport(String startingAirport) { this.startingAirport = startingAirport; }
 
-public String getDestinationAirport() { return destinationAirport; }
-public void setDestinationAirport(String destinationAirport) { this.destinationAirport = destinationAirport; }
+    public String getDestinationAirport() { return destinationAirport; }
+    public void setDestinationAirport(String destinationAirport) { this.destinationAirport = destinationAirport; }
 
-public double getEstimatedTime() { return estimatedTime; }
-public void setEstimatedTime(double estimatedTime) {
-	if (estimatedTime <= 0) throw new IllegalArgumentException("Estimated time must be positive.");
-	this.estimatedTime = estimatedTime;
-}
-
-public double getDistance() { return distance; }
-public void setDistance(double distance) {
-	if (distance <= 0) throw new IllegalArgumentException("Distance must be positive.");
-	this.distance = distance;
-}
-
-public double getFuelNeeded() { return fuelNeeded; }
-public void setFuelNeeded(double fuelNeeded) {
-	if (fuelNeeded <= 0) throw new IllegalArgumentException("Fuel needed must be positive.");
-	this.fuelNeeded = fuelNeeded;
-}
-
-public double getHeading() { return heading; }
-public void setHeading(double heading) {
-	if (heading < 0 || heading > 360) throw new IllegalArgumentException("Heading must be between 0 and 360 degrees.");
-	this.heading = heading;
-}
-
-public Double getDestinationCOM() { return destinationCOM; }
-public void setDestinationCOM(double destinationCOM) { this.destinationCOM = destinationCOM; }
-
-public List<String> getRefuelStops() { return refuelStops; }
-public void setRefuelStops(List<String> refuelStops) { this.refuelStops = refuelStops; }
-
-public String getFlightPlanDetails() {
-    StringBuilder details = new StringBuilder();
-    details.append("Flight Plan:\n");
-    details.append("Starting Airport: ").append(startingAirport).append("\n");
-    details.append("Destination Airport: ").append(destinationAirport).append("\n");
-    details.append(String.format("Estimated Time of Arrival: %.2f hours\n", estimatedTime));
-    details.append(String.format("Approximate Distance: %.2f miles\n", distance));
-    details.append(String.format("Fuel Needed: %.2f gallons\n", fuelNeeded));
-    details.append(String.format("Plane Heading: %.2f degrees\n", heading));
-    details.append("Destination Communication Frequency: ").append(destinationCOM).append("\n");
-    if (refuelStops != null && !refuelStops.isEmpty()) {
-        details.append("Refuel Stops:\n");
-        refuelStops.forEach(stop -> details.append(" - ").append(stop).append("\n"));
-    } else {
-        details.append("No refuel stops necessary.\n");
+    public double getEstimatedTime() { return estimatedTime; }
+    public void setEstimatedTime(double estimatedTime) {
+        if (estimatedTime <= 0) throw new IllegalArgumentException("Estimated time must be positive.");
+        this.estimatedTime = estimatedTime;
     }
-    return details.toString();
-}
+
+    public double getDistance() { return distance; }
+    public void setDistance(double distance) {
+        if (distance <= 0) throw new IllegalArgumentException("Distance must be positive.");
+        this.distance = distance;
+    }
+
+    public double getFuelNeeded() { return fuelNeeded; }
+    public void setFuelNeeded(double fuelNeeded) {
+        if (fuelNeeded <= 0) throw new IllegalArgumentException("Fuel needed must be positive.");
+        this.fuelNeeded = fuelNeeded;
+    }
+
+    public double getHeading() { return heading; }
+    public void setHeading(double heading) {
+        if (heading < 0 || heading > 360) throw new IllegalArgumentException("Heading must be between 0 and 360 degrees.");
+        this.heading = heading;
+    }
+
+    public Double getDestinationCOM() { return destinationCOM; }
+    public void setDestinationCOM(double destinationCOM) { this.destinationCOM = destinationCOM; }
+
+    public List<String> getRefuelStops() { return refuelStops; }
+    public void setRefuelStops(List<String> refuelStops) { this.refuelStops = refuelStops; }
+
+    public String getFlightPlanDetails() {
+        StringBuilder details = new StringBuilder();
+        details.append("Flight Plan:\n");
+        details.append("Starting Airport: ").append(startingAirport).append("\n");
+        details.append("Destination Airport: ").append(destinationAirport).append("\n");
+        details.append(String.format("Estimated Time of Arrival: %.2f hours\n", estimatedTime));
+        details.append(String.format("Approximate Distance: %.2f miles\n", distance));
+        details.append(String.format("Fuel Needed: %.2f gallons\n", fuelNeeded));
+        details.append(String.format("Plane Heading: %.2f degrees\n", heading));
+        details.append("Destination Communication Frequency: ").append(destinationCOM).append("\n");
+        if (refuelStops != null && !refuelStops.isEmpty()) {
+            details.append("Refuel Stops:\n");
+            refuelStops.forEach(stop -> details.append(" - ").append(stop).append("\n"));
+        } else {
+            details.append("No refuel stops necessary.\n");
+        }
+        return details.toString();
+    }
 }

@@ -17,13 +17,15 @@ public class Airport {
 
     /**
      * Constructor for airport class
-     * @param radioType: The type of radio used at the airport
-     * @param airportName: The name of the airport
-     * @param ICAOID: The ICAO code of the airport
-     * @param latitude: latitude coordinates of the airport
-     * @param longitude: longitude coordinates of the airport
-     * @param fuelTypes: fuel types available at airport
-     * @param radioFrequencies: radio frequency used at airport
+     * @param airportName Name of the airport
+     * @param latitude Latitude of the airport
+     * @param longitude Longitude of the airport'
+     * @param radioFrequencies Radio frequencies used at the airport
+     * @param regionState State of the airport
+     * @param regionAbbr Abbreviation of the state
+     * @param city City where the airport is located
+     * @param ICAO ICAO code of the airport
+     * @param fuelTypes Types of fuel available at the airport
      */
     public Airport(String airportName, Double latitude, Double longitude, Double radioFrequencies, String regionState, String regionAbbr, String city, String ICAO, Double fuelTypes) {
         this.airportName = airportName;
